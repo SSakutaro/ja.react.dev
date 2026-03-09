@@ -5,30 +5,30 @@ version: experimental
 
 <Experimental>
 
-**This API is experimental and is not available in a stable version of React yet.**
+**この API は実験的なものであり、まだ安定版の React では利用できません。**
 
-You can try it by upgrading React packages to the most recent experimental version:
+React のパッケージを最新の experimental 版にアップグレードすることで試すことができます。
 
 - `react@experimental`
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-Experimental versions of React may contain bugs. Don't use them in production.
+React の experimental 版にはバグが含まれている可能性があります。本番環境では使用しないでください。
 
-This API is only available inside React Server Components.
+この API は React Server Components 内でのみ利用できます。
 
 </Experimental>
 
 
 <Intro>
 
-`taintObjectReference` lets you prevent a specific object instance from being passed to a Client Component like a `user` object.
+`taintObjectReference` は `user` オブジェクトのような特定のオブジェクトインスタンスが Client Component に渡されるのを防ぐためのものです。
 
 ```js
 experimental_taintObjectReference(message, object);
 ```
 
-To prevent passing a key, hash or token, see [`taintUniqueValue`](/reference/react/experimental_taintUniqueValue).
+キー、ハッシュ、トークンが渡されるのを防ぎたい場合は、[`taintUniqueValue`](/reference/react/experimental_taintUniqueValue) を参照してください。
 
 </Intro>
 
@@ -36,11 +36,11 @@ To prevent passing a key, hash or token, see [`taintUniqueValue`](/reference/rea
 
 ---
 
-## Reference {/*reference*/}
+## リファレンス {/*reference*/}
 
 ### `taintObjectReference(message, object)` {/*taintobjectreference*/}
 
-Call `taintObjectReference` with an object to register it with React as something that should not be allowed to be passed to the Client as is:
+`taintObjectReference` をオブジェクトと共に呼び出すことで、そのオブジェクトを「そのまま Client に渡してはならないもの」として React に登録します。
 
 ```js
 import {experimental_taintObjectReference} from 'react';
@@ -51,11 +51,11 @@ experimental_taintObjectReference(
 );
 ```
 
-[See more examples below.](#usage)
+[さらに例を見る](#usage)
 
-#### Parameters {/*parameters*/}
+#### 引数 {/*parameters*/}
 
-* `message`: The message you want to display if the object gets passed to a Client Component. This message will be displayed as a part of the Error that will be thrown if the object gets passed to a Client Component.
+* `message`: オブジェクトが Client Component に渡されてしまった場合に表示したいメッセージです。このメッセージは、そのオブジェクトが Client Component に渡されたときに投げられる Error の一部として表示されます。
 
 * `object`: The object to be tainted. Functions and class instances can be passed to `taintObjectReference` as `object`. Functions and classes are already blocked from being passed to Client Components but the React's default error message will be replaced by what you defined in `message`. When a specific instance of a Typed Array is passed to `taintObjectReference` as `object`, any other copies of the Typed Array will not be tainted.
 
@@ -75,7 +75,7 @@ experimental_taintObjectReference(
 
 ---
 
-## Usage {/*usage*/}
+## 使用法 {/*usage*/}
 
 ### Prevent user data from unintentionally reaching the client {/*prevent-user-data-from-unintentionally-reaching-the-client*/}
 
